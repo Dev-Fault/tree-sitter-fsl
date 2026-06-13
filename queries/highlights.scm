@@ -44,19 +44,20 @@
 ("," @punctuation.delimiter)
 
 ; the def command identifier
-(chain_expression
-  (expression command_identifier: (identifier) @keyword
-  (#match? @keyword "^def$")))
-
+((chain_expression
+  (expression
+    command_identifier: (identifier) @keyword))
+  (#match? @keyword "^def$"))
 ; name of the function being defined (the chain head)
-(chain_expression
-  (arg (identifier) @function.definition)
-  (expression command_identifier: (identifier) @keyword
-  (#match? @keyword "^def$")))
-
+((chain_expression
+  (identifier) @function.definition
+  (expression
+    command_identifier: (identifier) @keyword))
+  (#match? @keyword "^def$"))
 ; parameters - identifiers directly in the arg_list of a def
-(chain_expression
-  (expression command_identifier: (identifier) @keyword
-  (#match? @keyword "^def$")
-  (arg_list
-    (arg (identifier) @variable.parameter))))
+((chain_expression
+  (expression
+    command_identifier: (identifier) @keyword
+    (arg_list
+      (arg (identifier) @variable.parameter))))
+  (#match? @keyword "^def$"))

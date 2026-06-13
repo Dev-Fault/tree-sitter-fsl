@@ -29,16 +29,41 @@ module.exports = grammar({
             ')'
         )),
 
-        chain_expression: $ => prec(1, seq(
-            $.arg,
-            repeat(seq('.', $.identifier)),
+
+        property_segment: $ => choice(
+            $.boolean,
+            $.number,
+            $.string,
+            $.identifier,
+            $.comment,
+        ),
+
+        chain_expression: $ => prec.left(5, seq(
+            choice(
+                $.chain_expression,
+                $.property,
+                $.identifier,
+                $.expression,
+                $.boolean,
+                $.number,
+                $.string,
+                $.list,
+                $.map,
+            ),
             '.',
             $.expression,
+        )),
+
+        property: $ => prec.left(1, seq(
+            $.identifier,
+            repeat1(seq('.', $.property_segment)),
+            repeat1(seq('.', $.property_segment))
         )),
 
         arg: $ => choice(
             $.expression,
             $.chain_expression,
+            $.property,
             $.boolean,
             $.number,
             $.string,
