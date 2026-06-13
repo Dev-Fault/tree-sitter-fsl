@@ -2,7 +2,7 @@
 (chain_expression (identifier) @property)
 
 ; function calls
-(chain_expression command_identifier: (identifier) @function.call)
+(chain_expression (expression command_identifier: (identifier) @function.call))
 (expression (identifier) @function.call)
 
 ; the head identifier
@@ -45,18 +45,18 @@
 
 ; the def command identifier
 (chain_expression
-  command_identifier: (identifier) @keyword
-  (#match? @keyword "^def$"))
+  (expression command_identifier: (identifier) @keyword
+  (#match? @keyword "^def$")))
 
 ; name of the function being defined (the chain head)
 (chain_expression
   (arg (identifier) @function.definition)
-  command_identifier: (identifier) @keyword
-  (#match? @keyword "^def$"))
+  (expression command_identifier: (identifier) @keyword
+  (#match? @keyword "^def$")))
 
 ; parameters - identifiers directly in the arg_list of a def
 (chain_expression
-  command_identifier: (identifier) @keyword
+  (expression command_identifier: (identifier) @keyword
   (#match? @keyword "^def$")
   (arg_list
-    (arg (identifier) @variable.parameter)))
+    (arg (identifier) @variable.parameter))))

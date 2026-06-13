@@ -1,7 +1,6 @@
 module.exports = grammar({
     name: 'fsl',
 
-
     extras: $ => [
         /\s/,
         /\{/,
@@ -24,7 +23,7 @@ module.exports = grammar({
         )),
 
         expression: $ => prec(10, seq(
-            optional($.identifier),
+            optional(field('command_identifier', $.identifier, )),
             '(',
             optional($.arg_list),
             ')'
@@ -34,10 +33,7 @@ module.exports = grammar({
             $.arg,
             repeat(seq('.', $.identifier)),
             '.',
-            optional(field('command_identifier', $.identifier, )),
-            '(',
-            optional($.arg_list),
-            ')'
+            $.expression,
         )),
 
         arg: $ => choice(

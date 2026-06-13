@@ -84,6 +84,29 @@
   {
     "type": "chain_expression",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression",
+    "named": true,
     "fields": {
       "command_identifier": {
         "multiple": false,
@@ -97,38 +120,11 @@
       }
     },
     "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arg",
-          "named": true
-        },
-        {
-          "type": "arg_list",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
           "type": "arg_list",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]
