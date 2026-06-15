@@ -11,7 +11,7 @@ module.exports = grammar({
 
         source_file: $ => repeat(
             choice(
-                $.chain_expression,
+                $.property,
                 $.expression,
                 $.comment,
             )
@@ -29,8 +29,8 @@ module.exports = grammar({
             ')'
         )),
 
-
         property_segment: $ => choice(
+            $.expression,
             $.boolean,
             $.number,
             $.string,
@@ -38,31 +38,13 @@ module.exports = grammar({
             $.comment,
         ),
 
-        chain_expression: $ => prec.left(5, seq(
-            choice(
-                $.chain_expression,
-                $.property,
-                $.identifier,
-                $.expression,
-                $.boolean,
-                $.number,
-                $.string,
-                $.list,
-                $.map,
-            ),
-            '.',
-            $.expression,
-        )),
-
         property: $ => prec.left(1, seq(
             $.identifier,
             repeat1(seq('.', $.property_segment)),
-            repeat1(seq('.', $.property_segment))
         )),
 
         arg: $ => choice(
             $.expression,
-            $.chain_expression,
             $.property,
             $.boolean,
             $.number,
@@ -80,7 +62,7 @@ module.exports = grammar({
                     seq(',', $.arg),
                     // no comma needed if next arg is a command
                     $.expression,
-                    $.chain_expression,
+                    $.property,
                     $.map,
                     $.list,
                     $.comment,

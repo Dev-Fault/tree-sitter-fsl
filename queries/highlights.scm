@@ -1,8 +1,8 @@
 ; path segments
-(chain_expression (identifier) @property)
+(property (identifier) @property)
 
 ; function calls
-(chain_expression (expression command_identifier: (identifier) @function.call))
+; (property (expression command_identifier: (identifier) @function.call))
 (expression (identifier) @function.call)
 
 ; the head identifier
@@ -44,18 +44,20 @@
 ("," @punctuation.delimiter)
 
 ; the def command identifier
-((chain_expression
+((property_segment
   (expression
     command_identifier: (identifier) @keyword))
   (#match? @keyword "^def$"))
+
 ; name of the function being defined (the chain head)
-((chain_expression
+((property
   (identifier) @function.definition
-  (expression
+  (property_segment (expression
     command_identifier: (identifier) @keyword))
-  (#match? @keyword "^def$"))
+  (#match? @keyword "^def$")))
+ 
 ; parameters - identifiers directly in the arg_list of a def
-((chain_expression
+((property_segment
   (expression
     command_identifier: (identifier) @keyword
     (arg_list

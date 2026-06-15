@@ -12,10 +12,6 @@
           "named": true
         },
         {
-          "type": "chain_expression",
-          "named": true
-        },
-        {
           "type": "comment",
           "named": true
         },
@@ -63,10 +59,6 @@
           "named": true
         },
         {
-          "type": "chain_expression",
-          "named": true
-        },
-        {
           "type": "comment",
           "named": true
         },
@@ -81,52 +73,9 @@
         {
           "type": "map",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "chain_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "chain_expression",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
         },
         {
           "type": "property",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         }
       ]
@@ -243,6 +192,10 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -267,15 +220,15 @@
       "required": false,
       "types": [
         {
-          "type": "chain_expression",
-          "named": true
-        },
-        {
           "type": "comment",
           "named": true
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "property",
           "named": true
         }
       ]

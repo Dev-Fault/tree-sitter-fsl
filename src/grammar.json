@@ -9,7 +9,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "chain_expression"
+            "name": "property"
           },
           {
             "type": "SYMBOL",
@@ -110,6 +110,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "boolean"
         },
         {
@@ -129,64 +133,6 @@
           "name": "comment"
         }
       ]
-    },
-    "chain_expression": {
-      "type": "PREC_LEFT",
-      "value": 5,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "chain_expression"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "property"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "boolean"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "number"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "string"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "list"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "map"
-              }
-            ]
-          },
-          {
-            "type": "STRING",
-            "value": "."
-          },
-          {
-            "type": "SYMBOL",
-            "name": "expression"
-          }
-        ]
-      }
     },
     "property": {
       "type": "PREC_LEFT",
@@ -213,22 +159,6 @@
                 }
               ]
             }
-          },
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "."
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "property_segment"
-                }
-              ]
-            }
           }
         ]
       }
@@ -239,10 +169,6 @@
         {
           "type": "SYMBOL",
           "name": "expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "chain_expression"
         },
         {
           "type": "SYMBOL",
@@ -309,7 +235,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "chain_expression"
+                "name": "property"
               },
               {
                 "type": "SYMBOL",
@@ -437,18 +363,6 @@
           "value": "["
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "comment"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
           "type": "SYMBOL",
           "name": "map_entry"
         },
@@ -458,32 +372,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "comment"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
                 "type": "STRING",
                 "value": ","
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "comment"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
               },
               {
                 "type": "SYMBOL",
@@ -498,18 +388,6 @@
             {
               "type": "STRING",
               "value": ","
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "comment"
             },
             {
               "type": "BLANK"
